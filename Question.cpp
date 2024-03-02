@@ -15,6 +15,15 @@ Question::Question(std::string option1Str, std::string option2Str, std::string o
   optionsarr[3] = option4;
 }
 
+Question::~Question()
+{
+  for (int i = 0; i < 4; i++)
+  {
+    delete optionsarr[i];
+  }
+  delete[] optionsarr;
+}
+
 Option* Question::getOption(int optionID)
 {
   return optionsarr[optionID-1];
