@@ -12,9 +12,12 @@ class Question
     Option* option4; // question answer 4
     int correctAnswerID; // ID for the correct answer
     Option** optionsarr; // array that holds the answers
+    std::string questionstr; // string for the actual question
     
   public:
-    Question(std::string option1Str, std::string option2Str, std::string option3Str, std::string option4Str, int correctAnswerID);
+    Question(std::string option1Str, std::string option2Str, std::string option3Str, std::string option4Str, int correctAnswerID, std::string questionstr);
     ~Question();
     Option* getOption(int optionID);
+    std::string getQuestionStr();
+    int getCorrectAnswerID();
 };

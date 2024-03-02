@@ -1,12 +1,13 @@
 #include "Question.h"
 
-Question::Question(std::string option1Str, std::string option2Str, std::string option3Str, std::string option4Str, int correctAnswerID)
+Question::Question(std::string option1Str, std::string option2Str, std::string option3Str, std::string option4Str, int correctAnswerID, std::string questionstr)
 {
   this->option1 = new Option(option1Str, 1);
   this->option2 = new Option(option2Str, 2);
   this->option3 = new Option(option3Str, 3);
   this->option4 = new Option(option4Str, 4);
   this->correctAnswerID = correctAnswerID;
+  this->questionstr = questionstr;
 
   optionsarr = new Option*[4];
   optionsarr[0] = option1;
@@ -27,4 +28,14 @@ Question::~Question()
 Option* Question::getOption(int optionID)
 {
   return optionsarr[optionID-1];
+}
+
+std::string Question::getQuestionStr()
+{
+  return questionstr;
+}
+
+int Question::getCorrectAnswerID()
+{
+  return correctAnswerID;
 }
