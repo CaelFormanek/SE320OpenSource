@@ -3,8 +3,7 @@ name: CI
 on:
   push:
     branches:
-      - main  # Adjust this according to your main branch name
-
+      - main  
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -18,16 +17,11 @@ jobs:
       with:
         node-version: '20'
 
-    - name: Install GoogleTest
+    - name: Copy GoogleTest Build
       run: |
-        sudo apt-get update
-        sudo apt-get install libgtest-dev
-        cd /usr/src/gtest
-        sudo cmake CMakeLists.txt
-        sudo make
-        sudo cp *.a /usr/lib
+        cp -r googletest/build /usr/local/
 
     - name: Build and Run Tests
       run: |
-        g++ -std=c++17 -Igoogletest/googletest/include -Lgoogletest/build/lib -lgtest -lgtest_main *.cpp -o test_executable
+        g++ -std=c++17 -Igoogletest/googletest/include -L/usr/local/build/lib -lgtest -lgtest_main *.cpp -o test_executable
         ./test_executable
