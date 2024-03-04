@@ -26,7 +26,7 @@ jobs:
 
     - name: Build GoogleTest
       run: |
-        mkdir -p /usr/local/build  # Create directory if it doesn't exist
+        mkdir -p /home/runner/work/SE320OpenSource/SE320OpenSource/build  # Create directory if it doesn't exist
         cd googletest/build
         cmake ..
         cmake --build .
@@ -34,13 +34,13 @@ jobs:
 
     - name: Change Permissions
       run: |
-        sudo chmod -R 777 /usr/local/build
+        sudo chmod -R 777 /home/runner/work/SE320OpenSource/SE320OpenSource/build
 
     - name: Copy GoogleTest Build
       run: |
-        cp -r googletest/build /usr/local/
+        cp -r googletest/build /home/runner/work/SE320OpenSource/SE320OpenSource/build/
 
     - name: Build and Run Tests
       run: |
-        g++ -std=c++17 -I/Users/cformanek/Documents/SE320/SE320OpenSource/googletest/googletest/include/gtest -L/usr/local/build/lib -lgtest -lgtest_main *.cpp -o test_executable
+        g++ -std=c++17 -I/Users/cformanek/Documents/SE320/SE320OpenSource/googletest/googletest/include/gtest -L/home/runner/work/SE320OpenSource/SE320OpenSource/build/lib -lgtest -lgtest_main *.cpp -o test_executable
         ./test_executable
