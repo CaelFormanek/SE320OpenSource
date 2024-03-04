@@ -13,14 +13,9 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v2
 
-    - name: Print Directory Contents
+    - name: Initialize and Update Submodules
       run: |
-        pwd
-        ls -la
-
-    - name: Debug Git Status
-      run: |
-        git status
+        git submodule update --init --recursive
 
     - name: Copy GoogleTest Build
       run: |
