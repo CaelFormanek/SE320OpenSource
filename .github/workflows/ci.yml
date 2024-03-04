@@ -33,7 +33,8 @@ jobs:
         cd ../..
 
     - name: Change Permissions
-      run: sudo chmod -R 777 /usr/local
+      run: |
+        sudo chmod -R 777 /usr/local/build
 
     - name: Copy GoogleTest Build
       run: |
