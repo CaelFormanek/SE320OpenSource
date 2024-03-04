@@ -18,11 +18,11 @@ jobs:
     - name: Initialize Submodules
       run: git submodule update --init --recursive
 
-    - name: Print Working Directory
+    - name: Print Directory Structure
       run: |
         pwd
         ls -la
-        ls -la googletest/googletest/include/gtest
+        ls -la googletest
 
     - name: Build GoogleTest
       run: |
@@ -38,5 +38,5 @@ jobs:
 
     - name: Build and Run Tests
       run: |
-        g++ -std=c++17 -I./googletest/googletest/include -L/usr/local/build/lib -lgtest -lgtest_main *.cpp -o test_executable
+        g++ -std=c++17 -I/home/runner/work/SE320OpenSource/SE320OpenSource/googletest/googletest/include -L/usr/local/build/lib -lgtest -lgtest_main *.cpp -o test_executable
         ./test_executable
