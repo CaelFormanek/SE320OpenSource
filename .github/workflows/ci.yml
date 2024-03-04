@@ -15,10 +15,12 @@ jobs:
 
     - name: Build GoogleTest
       run: |
+        mkdir googletest/build
         cd googletest
-        cmake -B build .
-        cmake --build build
-        cd ..
+        cd build
+        cmake ..
+        cmake --build .
+        cd ../..
 
     - name: Copy GoogleTest Build
       run: |
