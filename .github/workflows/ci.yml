@@ -3,41 +3,36 @@ name: CI
 on:
   push:
     branches:
-      - main 
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
-      with:
-        submodules: 'recursive'  # Ensure submodules are properly initialized
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+        with:
+          submodules: 'recursive'  # Ensure submodules are properly initialized
 
-    - name: Initialize Submodules
-      run: git submodule update --init --recursive
+      - name: Initialize Submodules
+        run: git submodule update --init --recursive
 
-    - name: Print Directory Structure
-      run: |
-        pwd
-        ls -la
-        ls -la googletest
+      - name: Print Directory Structure
+        run: |
+          pwd
+          ls -la
+          ls -la googletest
 
-    - name: Build GoogleTest
-      run: |
-        mkdir googletest/build
-        cd googletest/build
-        cmake ..
-        cmake --build .
-        cd ../..
+      - name: Build GoogleTest
+        run: |
+          mkdir googletest/build
+          cd googletest/build
+          cmake ..
+          cmake --build .
+          cd ../..
 
-    - name: Copy GoogleTest Build
-      run: |
-        sudo cp -r SE320OpenSource /usr/local/
-
-
-    - name: Build and Run Tests
-      run: |
-        g++ -std=c++17 -Igoogletest/googletest/include -L/usr/local/lib -lgtest -lgtest_main *.cpp -o test_executable
-        ./test_executable
+      - name: Build and Run Tests
+        run: |
+          g++ -std=c++17 -Igoogletest/googletest/include -Lgoogletest/build/lib -lgtest -lgtest_main *.cpp -o test_executable
+          ./test_executable
