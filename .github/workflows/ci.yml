@@ -26,7 +26,7 @@ jobs:
 
     - name: Build GoogleTest
       run: |
-        mkdir googletest/build
+        mkdir -p /usr/local/build  # Create directory if it doesn't exist
         cd googletest/build
         cmake ..
         cmake --build .
