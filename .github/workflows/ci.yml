@@ -11,10 +11,9 @@ jobs:
     - name: Check out repository
       uses: actions/checkout@v2
 
-
     - name: Build
       run: |
-        g++ -std=c++17 -I /usr/include -I /usr/src/gtest -L /usr/lib -lgtest -lgtest_main -pthread *.cpp -o test
+        g++ -std=c++17 -I /usr/include -I googletest/googletest/include -L /usr/lib -lgtest -lgtest_main -pthread *.cpp -o test
 
     - name: Run tests
       run: ./test
