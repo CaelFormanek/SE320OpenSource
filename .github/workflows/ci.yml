@@ -14,11 +14,11 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y libgtest-dev
+        sudo apt-get install -y libgtest-dev mlocate
 
     - name: Find GTest include directory
       run: |
-        GTEST_INCLUDE_DIR=$(find /usr/ -name gtest.h -exec dirname {} \; | head -n 1)
+        GTEST_INCLUDE_DIR=$(dirname $(locate -r '/gtest\.h$'))
 
     - name: Build
       run: |
