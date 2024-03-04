@@ -6,10 +6,7 @@ potential answers to a quiz question), a Question (the actual question
 being asked), and a StudyGame (a game for the user to play).
 
 Instructions for Running:
-
-
-For running regularly
-g++ -std=c++17 *.cpp -o source -lgtest -lgtest_main -pthread
+g++  *.cpp -o source
 ./source
 
 List of Five Issues to Fix:
