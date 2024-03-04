@@ -19,10 +19,7 @@ jobs:
         run: git submodule update --init --recursive
 
       - name: Print Directory Structure
-        run: |
-          pwd
-          ls -la
-          ls -la googletest
+        run: find . -name gtest.h
 
       - name: Build GoogleTest
         run: |
