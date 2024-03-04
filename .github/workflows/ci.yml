@@ -3,7 +3,8 @@ name: CI
 on:
   push:
     branches:
-      - main  
+      - main 
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -17,15 +18,13 @@ jobs:
       with:
         node-version: '20'
 
+    - name: Print Directory Contents
+      run: |
+        ls -la
+
     - name: Copy GoogleTest Build
       run: |
         cp -r googletest/build /usr/local/
-
-    - name: Debug Git Status
-      run: |
-        pwd
-        ls -la
-        git status
 
     - name: Build and Run Tests
       run: |
