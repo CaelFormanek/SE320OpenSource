@@ -34,6 +34,7 @@ jobs:
 
     - name: Copy GoogleTest Build
       run: |
+        sudo cp -r googletest /usr/local/
         sudo cp -r googletest/build /usr/local/
 
     - name: Build and Run Tests
