@@ -12,12 +12,23 @@ jobs:
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v2
+      with:
+        submodules: 'recursive'  # Ensure submodules are properly initialized
+
+    - name: Initialize Submodules
+      run: git submodule update --init --recursive
+
+    - name: Print Directory Structure
+      run: |
+        pwd
+        ls -la
+        ls -la googletest
+        ls -la googletest/build
 
     - name: Build GoogleTest
       run: |
         mkdir googletest/build
-        cd googletest
-        cd build
+        cd googletest/build
         cmake ..
         cmake --build .
         cd ../..
