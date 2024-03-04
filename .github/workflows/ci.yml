@@ -12,11 +12,13 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Install dependencies
-      run: sudo apt-get install -y libgtest-dev
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libgtest-dev
 
     - name: Build
       run: |
-        g++ -std=c++17 -I /usr/include/gtest -L /usr/lib -lgtest -lgtest_main -pthread *.cpp -o test
+        g++ -std=c++17 -I /usr/include -I /usr/src/gtest -L /usr/lib -lgtest -lgtest_main -pthread *.cpp -o test
 
     - name: Run tests
       run: ./test
