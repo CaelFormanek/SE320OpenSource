@@ -24,9 +24,12 @@ jobs:
         ls -la
         ls -la googletest
 
+    - name: Create Build Directory
+      run: |
+        mkdir -p /home/runner/work/SE320OpenSource/SE320OpenSource/googletest/build
+
     - name: Build GoogleTest
       run: |
-        mkdir -p /home/runner/work/SE320OpenSource/SE320OpenSource/build  # Create directory if it doesn't exist
         cd googletest/build
         cmake ..
         cmake --build .
@@ -34,7 +37,7 @@ jobs:
 
     - name: Change Permissions
       run: |
-        sudo chmod -R 777 /home/runner/work/SE320OpenSource/SE320OpenSource/build
+        sudo chmod -R 777 /home/runner/work/SE320OpenSource/SE320OpenSource/googletest/build
 
     - name: Copy GoogleTest Build
       run: |
