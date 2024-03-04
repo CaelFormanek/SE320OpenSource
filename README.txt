@@ -7,7 +7,7 @@ being asked), and a StudyGame (a game for the user to play).
 
 Instructions for Running:
 For running tests (change file directory for your computer):
-g++ -std=c++17 -I/Users/cformanek/Documents/SE320/SE320OpenSource/googletest/googletest/include/gtest -L/usr/local/build/lib -lgtest -lgtest_main *.cpp -o test_executable
+g++ -std=c++17 -I/SE320OpenSource/googletest/googletest/include/gtest -L/usr/local/build/lib -lgtest -lgtest_main *.cpp -o test_executable
 ./test_executable
 
 For running regularly

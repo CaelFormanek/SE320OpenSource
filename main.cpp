@@ -1,5 +1,5 @@
 #include <iostream>
-#include <googletest/googletest/include/gtest/gtest.h>
+#include "googletest/googletest/include/gtest/gtest.h"
 #include "StudyGame.h"
 
 // test that the program exits upon illegal reference
