@@ -21,6 +21,12 @@ jobs:
       run: |
         cp -r googletest/build /usr/local/
 
+    - name: Debug Git Status
+      run: |
+        pwd
+        ls -la
+        git status
+
     - name: Build and Run Tests
       run: |
         g++ -std=c++17 -Igoogletest/googletest/include -L/usr/local/build/lib -lgtest -lgtest_main *.cpp -o test_executable
