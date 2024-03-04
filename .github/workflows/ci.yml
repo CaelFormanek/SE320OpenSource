@@ -13,7 +13,7 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v2
       with:
-        submodules: 'recursive'  # Ensure submodules are properly initialized
+        submodules: 'recursive' 
 
     - name: Initialize Submodules
       run: git submodule update --init --recursive
@@ -31,6 +31,9 @@ jobs:
         cmake ..
         cmake --build .
         cd ../..
+
+    - name: Change Permissions
+      run: sudo chmod -R 777 /usr/local
 
     - name: Copy GoogleTest Build
       run: |
