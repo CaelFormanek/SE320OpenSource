@@ -1,4 +1,4 @@
-name: CI
+name: C++ Test
 
 on: [push, pull_request]
 
@@ -16,9 +16,14 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y libgtest-dev
 
+    - name: Find GTest include directory
+      run: |
+        locate gtest/gtest.h
+
     - name: Build
       run: |
-        g++ -std=c++17 -I /usr/include -I /usr/src/gtest -L /usr/lib -lgtest -lgtest_main -pthread *.cpp -o test
+        GTEST_INCLUDE_DIR=$(dirname $(locate gtest/gtest.h))
+        g++ -std=c++17 -I $GTEST_INCLUDE_DIR -L /usr/lib -lgtest -lgtest_main -pthread *.cpp -o test
 
     - name: Run tests
       run: ./test
