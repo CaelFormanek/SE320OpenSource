@@ -1,0 +1,16 @@
+name: CI
+
+on: [push]
+
+jobs:
+  project-test-check:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    
+    - name: Run Tests
+      run: |
+        g++ *.cpp -o source
+        ./source
