@@ -6,12 +6,10 @@ potential answers to a quiz question), a Question (the actual question
 being asked), and a StudyGame (a game for the user to play).
 
 Instructions for Running:
-For running tests (change file directory for your computer):
-g++ -std=c++17 -I/SE320OpenSource/googletest/googletest/include/gtest -L/usr/local/build/lib -lgtest -lgtest_main *.cpp -o test_executable
-./test_executable
+
 
 For running regularly
-g++ -std=c++17 *.cpp -o source
+g++ -std=c++17 *.cpp -o source -lgtest -lgtest_main -pthread
 ./source
 
 List of Five Issues to Fix:

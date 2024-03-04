@@ -1,35 +1,22 @@
 name: CI
 
-on:
-  push:
-    branches:
-      - main
+on: [push, pull_request]
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-        with:
-          submodules: 'recursive'  # Ensure submodules are properly initialized
+    - name: Check out repository
+      uses: actions/checkout@v2
 
-      - name: Initialize Submodules
-        run: git submodule update --init --recursive
+    - name: Install dependencies
+      run: sudo apt-get install -y libgtest-dev
 
-      - name: Print Location of gtest.h
-        run: find . -name gtest.h
+    - name: Build
+      run: |
+        g++ -std=c++17 -I /usr/include/gtest -L /usr/lib -lgtest -lgtest_main -pthread *.cpp -o test
 
-      - name: Build GoogleTest
-        run: |
-          mkdir googletest/build
-          cd googletest/build
-          cmake ..
-          cmake --build .
-          cd ../..
-
-      - name: Build and Run Tests
-        run: |
-          g++ -std=c++17 -Igoogletest/googletest/include/gtest -Lgoogletest/build/lib -lgtest -lgtest_main *.cpp -o test_executable
-          ./test_executable
+    - name: Run tests
+      run: ./test
