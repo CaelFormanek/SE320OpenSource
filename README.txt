@@ -6,8 +6,8 @@ potential answers to a quiz question), a Question (the actual question
 being asked), and a StudyGame (a game for the user to play).
 
 Instructions for Running:
-For running tests:
-g++ -std=c++17 -Igoogletest/googletest/include -Lgoogletest/build/lib -lgtest -lgtest_main *.cpp -o test_executable
+For running tests (change file directory for your computer):
+g++ -std=c++17 -I/Users/cformanek/Documents/SE320/SE320OpenSource/googletest/googletest/include -L/usr/local/build/lib -lgtest -lgtest_main *.cpp -o test_executable
 ./test_executable
 
 For running regularly
