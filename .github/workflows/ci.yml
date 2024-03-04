@@ -13,7 +13,7 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v2
       with:
-        submodules: 'recursive' 
+        submodules: 'recursive'  # Ensure submodules are properly initialized
 
     - name: Initialize Submodules
       run: git submodule update --init --recursive
