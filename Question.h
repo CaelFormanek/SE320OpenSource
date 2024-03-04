@@ -12,6 +12,7 @@ class Question
     Option* option4; // question answer 4
     int correctAnswerID; // ID for the correct answer
     Option** optionsarr; // array that holds the answers
+    int numOptions;
     std::string questionstr; // string for the actual question
     
   public:
@@ -20,4 +21,6 @@ class Question
     Option* getOption(int optionID);
     std::string getQuestionStr();
     int getCorrectAnswerID();
+    int getNumOptions();
+    void addOption(Option* o);
 };

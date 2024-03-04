@@ -8,6 +8,7 @@ Question::Question(std::string option1Str, std::string option2Str, std::string o
   this->option4 = new Option(option4Str, 4);
   this->correctAnswerID = correctAnswerID;
   this->questionstr = questionstr;
+  this->numOptions = 4;
 
   optionsarr = new Option*[4];
   optionsarr[0] = option1;
@@ -38,4 +39,14 @@ std::string Question::getQuestionStr()
 int Question::getCorrectAnswerID()
 {
   return correctAnswerID;
+}
+
+int Question::getNumOptions()
+{
+  return numOptions;
+}
+
+void Question::addOption(Option* o)
+{
+
 }
