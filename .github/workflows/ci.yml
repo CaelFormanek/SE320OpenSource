@@ -32,12 +32,9 @@ jobs:
         cmake --build .
         cd ../..
 
-    # - name: Change Permissions
-      # run: sudo chmod -R 777 /usr/local
-
     - name: Copy GoogleTest Build
       run: |
-        cp -r googletest/build /usr/local/
+        sudo cp -r googletest/build /usr/local/
 
     - name: Build and Run Tests
       run: |
