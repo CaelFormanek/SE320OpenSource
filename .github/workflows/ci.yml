@@ -18,11 +18,10 @@ jobs:
 
     - name: Find GTest include directory
       run: |
-        locate gtest/gtest.h
+        GTEST_INCLUDE_DIR=$(find /usr/ -name gtest.h -exec dirname {} \; | head -n 1)
 
     - name: Build
       run: |
-        GTEST_INCLUDE_DIR=$(dirname $(locate gtest/gtest.h))
         g++ -std=c++17 -I $GTEST_INCLUDE_DIR -L /usr/lib -lgtest -lgtest_main -pthread *.cpp -o test
 
     - name: Run tests
