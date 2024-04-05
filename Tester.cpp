@@ -10,7 +10,7 @@ Tester::~Tester()
 
 }
 
-void Tester::assertEq(std::string testname, void* a, void* b)
+int Tester::assertEq(std::string testname, void* a, void* b)
 {
   if (a == b)
   {
@@ -19,10 +19,12 @@ void Tester::assertEq(std::string testname, void* a, void* b)
   else
   {
     std::cout << testname << " : Test Failed. Expected " << a << ", got " << b << std::endl;
+    return -1;
   }
+  return 1;
 }
 
-void Tester::assertEqInt(std::string testname, int a, int b)
+int Tester::assertEqInt(std::string testname, int a, int b)
 {
   if (a == b)
   {
@@ -31,10 +33,12 @@ void Tester::assertEqInt(std::string testname, int a, int b)
   else
   {
     std::cout << testname << " : Test Failed. Expected " << a << ", got " << b << std::endl;
+    return -1;
   }
+  return 1;
 }
 
-void Tester::assertEqStr(std::string testname, std::string a, std::string b)
+int Tester::assertEqStr(std::string testname, std::string a, std::string b)
 {
   if (a == b)
   {
@@ -43,5 +47,7 @@ void Tester::assertEqStr(std::string testname, std::string a, std::string b)
   else
   {
     std::cout << testname << " : Test Failed. Expected " << a << ", got " << b << std::endl;
+    return -1;
   }
+  return 1;
 }
