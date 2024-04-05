@@ -1,6 +1,8 @@
 name: CI
 
-on: [push]
+on:
+  push:
+  pull_request:
 
 jobs:
   project-test-check:
@@ -10,7 +12,17 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
     
-    - name: Run Tests
+    - name: Build and Run Tests
+      id: test
       run: |
         g++ *.cpp -o source
         ./source
+        if [ $? -eq 0 ]; then
+          echo "::set-output name=test_result::pass"
+        else
+          echo "::set-output name=test_result::fail"
+        fi
+    
+    - name: Check Test Result and Fail if Necessary
+      if: steps.test.outputs.test_result == 'fail'
+      run: exit 1
