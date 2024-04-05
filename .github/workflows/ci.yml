@@ -9,20 +9,35 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
-    
-    - name: Build and Run Tests
-      id: test
-      run: |
-        g++ *.cpp -o source
-        ./source
-        if [ $? -eq 0 ]; then
-          echo "::set-output name=test_result::pass"
-        else
-          echo "::set-output name=test_result::fail"
-        fi
-    
-    - name: Check Test Result and Fail if Necessary
-      if: steps.test.outputs.test_result == 'fail'
-      run: exit 1
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Build and Run Tests
+        id: test
+        run: |
+          g++ *.cpp -o source
+          ./source
+          if [ $? -eq 0 ]; then
+            echo "::set-output name=test_result::pass"
+          else
+            echo "::set-output name=test_result::fail"
+          fi
+
+      - name: Check Test Result and Fail if Necessary
+        if: steps.test.outputs.test_result == 'fail'
+        run: exit 1
+
+  lint:
+    name: Lint Code Base
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Lint Code Base
+        uses: github/super-linter@v4
+        env:
+          VALIDATE_ALL_CODEBASE: true
