@@ -42,6 +42,8 @@ int run_all_tests(Tester* t)
 
 int main(int argc, char** argv)
 {
+  std::cout << "Fixing issue 5" << std::endl;
+  
   // declare main Tester
   Tester* t = new Tester();
 
