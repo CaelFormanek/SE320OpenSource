@@ -47,6 +47,7 @@ void StudyGame::addQuestion(Question* q)
     if (questionsarr[i] == nullptr)
     {
       questionsarr[i] = q;
+      return;
     }
   }
   
